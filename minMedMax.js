@@ -2,17 +2,33 @@ const { template } = require('@babel/core')
 
 function minMedMax(n1, n2, n3) {
   //code here
-  let array = [n1,n2,n3]
-for (let i = 0; i < array.length; i++) {
-  for (let x = i + 1; x < array.length; x++) {
-    if(array[i] > array[x]) {
-    let array0 ;
-    array0 = array[i];
-    array[i] = array[x];
-    array[x]= array0;
+  if((n1 > n2) && (n2 > n3)){
+    return {min:n3, mid:n2, max:n1}
   }
- }
-}
-return {min:array[0], mid: array[1], max: array[2]}
+  else if((n1 > n3)&&(n3 > n2)){
+    return {min:n2, mid:n3, max:n1}
+  }
+  else if((n2 > n1)&&(n1 > n3)){
+    return {min:n3, mid:n1, max:n2}
+  }
+  else if((n2 > n3)&&(n3 > n1)){
+    return {min:n1, mid:n3, max:n2}
+  }
+  else if((n3 > n2)&&(n2 > n1)){
+    return {min:n1, mid:n2, max:n3}
+  }
+  else if((n3 > n1)&&(n1 > n2)){
+    return {min:n2, mid:n1, max:n3}
+  }
+  else if((n1 > n2)&&(n1 > n3)&&(n2 = n3)){
+    return {min:n3, mid:n2, max:n1}
+  }
+  else if((n2 > n1)&&(n2 > n3)&&(n1 = n3)){
+    return {min:n3, mid:n1, max:n2}
+  }
+  else if((n3 > n1)&&(n3 > n2)&&(n1 = n2)){
+    return {min:n2, mid:n1, max:n3}
+  }
 }
 module.exports = minMedMax
+
